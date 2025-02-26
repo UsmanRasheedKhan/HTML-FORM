@@ -76,8 +76,9 @@ function getParameterByName(name, url = window.location.href) {
 
         // Auto-fill the title field from the URL parameter
         window.onload = function() {
-            const title = getParameterByName('title');
+            let title = getParameterByName('title');
             if (title) {
+                title = title.replace(/-/g, ' ');
                 document.getElementById('title').value = title;
             }
         };
