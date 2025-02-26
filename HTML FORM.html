@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Auto-Fetched Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required readonly>
+        
+        <label for="school">School</label>
+        <input type="text" id="school" name="school" required>
+        
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        // Function to get URL parameter by name
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[[\]]/g, "\\$&");
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return "";
+            return decodeURIComponent(results[2].replace(/\\+/g, " "));
+        }
+
+        // Auto-fill the title field from the URL parameter
+        window.onload = function() {
+            const title = getParameterByName('title');
+            if (title) {
+                document.getElementById('title').value = title;
+            }
+        };
+    </script>
+</body>
+</html>
