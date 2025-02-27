@@ -95,20 +95,20 @@ function getParameterByName(name, url = window.location.href) {
                 city: document.getElementById('city').value
             };
 
+            console.log(formData);
             // Send data to Power Automate via HTTP request
             fetch('https://prod-62.westeurope.logic.azure.com:443/workflows/bf5d3a6948214386988c1d408ecf1755/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=vJq--e6TgkxhXFy4npaYb71irnxC05JOuULspVe13FM', {  // Replace with your Power Automate URL
                 method: 'POST',
             })
             .then(response => {
-                if(response.ok) {
-                    return response.json();
-                }
-                throw new Error('Network response was not ok.');
-            })
+        if(response.ok) {
+            return response.json();
+        }
+        throw new Error('Network response was not ok.');
+    })
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
         });
-
     </script>
 </body>
 </html>
