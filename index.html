@@ -100,16 +100,16 @@ function getParameterByName(name, url = window.location.href) {
                 method: 'POST',
             })
             .then(response => {
-        if(response.ok) {
-            return response.json();
-        }
-        throw new Error('Network response was not ok.');
+                if(response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+                console.log(formData);
     })
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
         });
 
-        console.log(formData);
     </script>
 </body>
 </html>
