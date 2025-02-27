@@ -82,6 +82,31 @@ function getParameterByName(name, url = window.location.href) {
                 document.getElementById('title').value = title;
             }
         };
+
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Capture form data
+            const formData = {
+                email: document.getElementById('email').value,
+                username: document.getElementById('username').value,
+                title: document.getElementById('title').value,
+                school: document.getElementById('school').value,
+                city: document.getElementById('city').value
+            };
+
+            // Send data to Power Automate via HTTP request
+            fetch('https://prod-62.westeurope.logic.azure.com:443/workflows/bf5d3a6948214386988c1d408ecf1755/triggers/manual/paths/invoke?api-version=2016-06-01', {  // Replace with your Power Automate URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        });
     </script>
 </body>
 </html>
