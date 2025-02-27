@@ -98,14 +98,15 @@ function getParameterByName(name, url = window.location.href) {
             // Send data to Power Automate via HTTP request
             fetch('https://prod-62.westeurope.logic.azure.com:443/workflows/bf5d3a6948214386988c1d408ecf1755/triggers/manual/paths/invoke?api-version=2016-06-01', {  // Replace with your Power Automate URL
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
             })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
+            .then(response => {
+        if(response.ok) {
+            return response.json();
+        }
+        throw new Error('Network response was not ok.');
+    })
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
         });
     </script>
 </body>
