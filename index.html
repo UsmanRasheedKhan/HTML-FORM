@@ -106,8 +106,11 @@ function getParameterByName(name, url = window.location.href) {
         })
         .then(response => {
             if(response.ok) {
+                alert("Thank you for submission");
+                document.getElementById('myForm').reset();
+                document.getElementById('title').value = formData.title;
                 return response.json().catch(() => {
-                    return { message: 'Response not in JSON' };
+                    return { message: 'Response Submitted' };
                 });
             }
             throw new Error('Network response was not ok.');
