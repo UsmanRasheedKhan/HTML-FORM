@@ -97,7 +97,7 @@ function getParameterByName(name, url = window.location.href) {
 
             console.log(formData.email);
             // Send data to Power Automate via HTTP request
-            fetch('https://prod-128.westeurope.logic.azure.com:443/workflows/06e8b3a136f641b3a6e2a9da9c11024a/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qPzcKT1Qix5l2pmmUwf6lLmEHnlaz_5N0W6SprjIE3s', {  // Replace with your Power Automate URL
+            fetch('https://prod-150.westeurope.logic.azure.com:443/workflows/82d6c72e352440ef9325d028db45ffe2/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=HMgHK_vhVSLOi9czypnk0U2I_UvlcxdkPKxVgEJa0lE', {  // Replace with your Power Automate URL
                 method: 'POST',
                 headers: {
             'Content-Type': 'application/json'
